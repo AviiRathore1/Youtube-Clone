@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone | Portfolio Project</title>
+  <style>
+    :root{--bg:#f5f6f8;--ink:#14171f;--muted:#5a6272;--line:#d8dce4;--accent:#c4001a}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,sans-serif}
+    main{max-width:880px;margin:0 auto;padding:56px 20px 80px}
+    h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.1;margin:0 0 12px}
+    h2{font-size:1.25rem;margin:48px 0 12px}
+    p{max-width:68ch;color:var(--muted);margin:0 0 12px}
+    .by{color:var(--ink);font-weight:600}
+    .lead{font-size:1.1rem}
+    .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+    .btn:focus-visible{outline:3px solid #3ea6ff;outline-offset:2px}
+    .frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000}
+    iframe{display:block;width:100%;height:560px;border:0}
+    ul{padding-left:20px;max-width:68ch;color:var(--muted)}
+    li{margin-bottom:8px}
+    li strong{color:var(--ink)}
+    .stack{display:flex;gap:8px;flex-wrap:wrap;padding:0;list-style:none}
+    .stack li{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 14px;color:var(--ink);margin:0;font-size:15px}
+  </style>
+</head>
+<body>
+<main>
+  <p class="by">Avinash Rathore | Front-End Developer</p>
+  <h1>YouTube Clone</h1>
+  <p class="lead">A responsive front-end recreation of the YouTube home page, with a collapsible sidebar, category filters, live search and an in-page video player.</p>
+  <div class="links">
+    <a class="btn" href="index.html">Open live demo</a>
+  </div>
+
+  <h2>Overview</h2>
+  <p>I built this project to practise structuring a real-world interface from scratch using HTML, CSS and JavaScript. The page follows the layout people already know from YouTube: a fixed top bar with search, a navigation sidebar, a row of category filters and a grid of video cards.</p>
+  <p>It is a front-end-only project. It uses embedded YouTube videos and has no backend, accounts or API key, which kept the focus on layout, responsiveness, state handling and performance.</p>
+
+  <h2>Preview</h2>
+  <div class="frame"><iframe src="index.html" title="YouTube clone live preview" loading="lazy"></iframe></div>
+
+  <h2>How it works</h2>
+  <p>Video data lives in a single JavaScript array, and one render function builds the grid from it. The category buttons and the search box both feed the same filter, so they work together: choosing "Gaming" and typing a keyword narrows the results by both.</p>
+  <p>Cards show thumbnails rather than live players. Clicking a card opens a modal that loads the YouTube player only at that moment and unloads it on close, so playback stops and the page stays light. Real titles and channel names are fetched from YouTube's public oEmbed endpoint, with placeholder text as a fallback if the request fails.</p>
+
+  <h2>Technical highlights</h2>
+  <ul>
+    <li><strong>Responsive layout:</strong> a Bootstrap 5 grid that moves from one to four columns, and a sidebar that collapses on desktop and slides in over the content on tablets and phones.</li>
+    <li><strong>Performance:</strong> thumbnails are lazy-loaded, and the player iframe is created only on demand instead of embedding every video up front.</li>
+    <li><strong>Safe rendering:</strong> text fetched from an external source is escaped before it is inserted into the page.</li>
+    <li><strong>Accessibility:</strong> labelled icon buttons, keyboard-focusable cards, visible focus states and reduced-motion support.</li>
+    <li><strong>Maintainable structure:</strong> markup, styles and behaviour are split into separate files, with the video list kept as data so new videos can be added without touching the layout.</li>
+  </ul>
+
+  <h2>Tech stack</h2>
+  <ul class="stack"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Bootstrap 5</li><li>Lucide Icons</li></ul>
+</main>
+</body>
+</html>
